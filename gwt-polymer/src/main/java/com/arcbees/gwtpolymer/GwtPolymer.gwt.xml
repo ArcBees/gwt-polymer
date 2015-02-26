@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+        "https://raw.githubusercontent.com/gwtproject/gwt/2.7.0/distro-source/core/src/gwt-module.dtd">
+<module>
+    <inherits name="com.arcbees.gwtpolymer.elements.webcomponentsjs.Webcomponentsjs"/>
+
+    <source path="base"/>
+    <source path="event"/>
+
+    <define-configuration-property name="gwtpolymer.elements" is-multi-valued="true"/>
+    <set-configuration-property name="gwtpolymer.elements" value=""/>
+
+    <generate-with class="com.arcbees.gwtpolymer.rebind.ImportsGenerator">
+        <when-type-is class="com.arcbees.gwtpolymer.base.Imports"/>
+    </generate-with>
+</module>
