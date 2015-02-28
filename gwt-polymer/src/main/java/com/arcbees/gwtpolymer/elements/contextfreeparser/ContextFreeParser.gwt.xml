@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+        "https://raw.githubusercontent.com/gwtproject/gwt/2.7.0/distro-source/core/src/gwt-module.dtd">
+<module>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreajax.CoreAjax"/>
+
+    <extend-configuration-property name="gwtpolymer.elements" value="context-free-parser/context-free-parser.html"/>
+</module>
+

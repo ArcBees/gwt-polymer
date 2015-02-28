@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+        "https://raw.githubusercontent.com/gwtproject/gwt/2.7.0/distro-source/core/src/gwt-module.dtd">
+<module>
+    <inherits name="com.arcbees.gwtpolymer.elements.polymer.Polymer"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreajax.CoreAjax"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreanimatedpages.CoreAnimatedPages"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corecollapse.CoreCollapse"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coredocviewer.CoreDocViewer"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coredragdrop.CoreDragDrop"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coredrawerpanel.CoreDrawerPanel"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coredropdown.CoreDropdown"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coredropdownmenu.CoreDropdownMenu"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corefield.CoreField"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreheaderpanel.CoreHeaderPanel"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreiconbutton.CoreIconButton"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreicons.CoreIcons"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreimage.CoreImage"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreinput.CoreInput"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreitem.CoreItem"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corelabel.CoreLabel"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corelayoutgrid.CoreLayoutGrid"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corelayouttrbl.CoreLayoutTrbl"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corelist.CoreList"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corelocalstorage.CoreLocalstorage"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coremediaquery.CoreMediaQuery"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coremenu.CoreMenu"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coremenubutton.CoreMenuButton"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coremeta.CoreMeta"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreoverlay.CoreOverlay"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corepages.CorePages"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corerange.CoreRange"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corescaffold.CoreScaffold"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corescrollheaderpanel.CoreScrollHeaderPanel"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corescrollthreshold.CoreScrollThreshold"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreselection.CoreSelection"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreselector.CoreSelector"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coresharedlib.CoreSharedLib"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coresignals.CoreSignals"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coresplitter.CoreSplitter"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corestyle.CoreStyle"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coretoolbar.CoreToolbar"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coretooltip.CoreTooltip"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coretransition.CoreTransition"/>
+
+    <extend-configuration-property name="gwtpolymer.elements" value="core-elements/core-elements.html"/>
+</module>
+
