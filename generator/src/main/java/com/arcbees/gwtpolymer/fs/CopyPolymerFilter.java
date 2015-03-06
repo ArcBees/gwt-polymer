@@ -48,7 +48,8 @@ public class CopyPolymerFilter implements FileFilter {
 
     public CopyPolymerFilter() {
         List<IOFileFilter> filters = new ArrayList<>();
-        filters.add(new WildcardFileFilter(new String[]{"*.html", "*.css", "*.js", "*.js.map", "src"}, INSENSITIVE));
+        filters.add(new WildcardFileFilter(new String[]{"*.html", "*.css", "*.js", "*.js.map", "src", "transitions"},
+                INSENSITIVE));
         filters.add(new NotFileFilter(new WildcardFileFilter(NAMES_TO_IGNORE, INSENSITIVE)));
 
         delegate = new AndFileFilter(filters);
