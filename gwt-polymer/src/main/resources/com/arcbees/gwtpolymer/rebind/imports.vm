@@ -1,0 +1,28 @@
+#* @vtlvariable name="elements" type="java.lang.String[]" *#
+package $package;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.HeadElement;
+import com.google.gwt.dom.client.LinkElement;
+
+public class $implName implements Imports {
+    @Override
+    public void injectImports() {
+        HeadElement head = Document.get().getHead();
+
+#foreach ($element in $elements)
+#if ($element && !$element.empty)
+        addElement("$element", head);
+#end
+#end
+    }
+
+    private void addElement(String element, HeadElement head) {
+        LinkElement linkElement = Document.get().createLinkElement();
+        linkElement.setRel("import");
+        linkElement.setHref(GWT.getModuleBaseURL() + element);
+
+        head.insertAfter(linkElement, head.getFirstChild());
+    }
+}

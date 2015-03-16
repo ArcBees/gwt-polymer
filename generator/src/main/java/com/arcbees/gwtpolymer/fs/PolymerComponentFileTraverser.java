@@ -26,6 +26,15 @@ import com.arcbees.gwtpolymer.PolymerComponent;
 import com.arcbees.gwtpolymer.PolymerComponentFactory;
 
 public class PolymerComponentFileTraverser implements FileTraverser {
+    static final List<String> PATHS_TO_IGNORE;
+
+    static {
+        PATHS_TO_IGNORE = new ArrayList<>();
+        PATHS_TO_IGNORE.add("google-code-prettify");
+        PATHS_TO_IGNORE.add("polymer-test-tools");
+        PATHS_TO_IGNORE.add("core-tests");
+    }
+
     private final PolymerComponentFactory componentFactory;
 
     @Inject
@@ -38,11 +47,21 @@ public class PolymerComponentFileTraverser implements FileTraverser {
     public List<PolymerComponent> traverse(File directory) {
         List<PolymerComponent> components = new ArrayList<>();
         for (File file : directory.listFiles()) {
-            if (file.isDirectory()) {
+            if (file.isDirectory() && !isIgnoredFolder(file)) {
                 components.add(componentFactory.create(file));
             }
         }
 
         return components;
+    }
+
+    private boolean isIgnoredFolder(File file) {
+        for (String path : PATHS_TO_IGNORE) {
+            if (file.getPath().contains(path)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
