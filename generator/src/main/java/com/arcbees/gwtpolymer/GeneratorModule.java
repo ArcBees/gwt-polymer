@@ -41,10 +41,13 @@ import com.google.inject.name.Names;
 public class GeneratorModule extends AbstractModule {
     private static final String VELOCITY_PROPERTIES = "com/arcbees/gwtpolymer/velocity.properties";
 
+    private final Config config;
     private final String pathPrefix;
 
     public GeneratorModule(
+            Config config,
             String pathPrefix) {
+        this.config = config;
         this.pathPrefix = pathPrefix;
     }
 
@@ -57,8 +60,8 @@ public class GeneratorModule extends AbstractModule {
         bind(ComponentPathUtils.class).to(ComponentPathUtilsImpl.class).in(Singleton.class);
 
         File baseFolder = new File(elementsPackagePath());
-        bind(Path.class).annotatedWith(ElementsPackage.class).toInstance(
-                baseFolder.toPath().resolve("elements"));
+        bind(Path.class).annotatedWith(ElementsPackage.class)
+                .toInstance(baseFolder.toPath().resolve("elements"));
         bind(String.class).annotatedWith(DefaultPackagePath.class).toInstance(defaultPackagePath());
         bind(String.class).annotatedWith(PathPrefix.class).toInstance(pathPrefix);
 
@@ -82,10 +85,10 @@ public class GeneratorModule extends AbstractModule {
     }
 
     private String elementsPackagePath() {
-        return defaultPackagePath() + "/com/arcbees/gwtpolymer/";
+        return defaultPackagePath() + config.getElementsPackagePath();
     }
 
     private String defaultPackagePath() {
-        return new File(pathPrefix + "gwt-polymer/src/main/java/").getPath();
+        return new File(pathPrefix + config.getDefaultPackagePath()).getPath();
     }
 }

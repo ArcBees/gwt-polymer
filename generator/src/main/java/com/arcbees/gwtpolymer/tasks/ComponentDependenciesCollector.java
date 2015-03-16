@@ -71,8 +71,8 @@ public class ComponentDependenciesCollector implements Task<PolymerComponent> {
     private void addScriptDependencies(Set<PolymerComponent> dependencies, Document document) {
         Elements scripts = document.getElementsByTag("script");
         for (Element script : scripts) {
-            String href = script.attr("src");
-            addDependency(dependencies, href);
+            String src = script.attr("src");
+            addDependency(dependencies, src);
         }
     }
 

@@ -50,7 +50,7 @@ public class CopyPolymerFilterTest {
         boolean accept = filter.accept(new File(filename));
 
         // then
-        then(accept).isFalse();
+        then(accept).describedAs("accept(%s) should return false", filename).isFalse();
     }
 
     @Test
@@ -62,6 +62,6 @@ public class CopyPolymerFilterTest {
         boolean accept = filter.accept(new File(filename));
 
         // then
-        then(accept).isTrue();
+        then(accept).describedAs("accept(%s) should return true", filename).isTrue();
     }
 }

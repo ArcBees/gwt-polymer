@@ -34,7 +34,8 @@ public class Main {
             pathPrefix = "../";
         }
 
-        Injector injector = Guice.createInjector(new GeneratorModule(pathPrefix));
+        Config config = new Config();
+        Injector injector = Guice.createInjector(new GeneratorModule(config, pathPrefix));
         ComponentsGenerator packageGenerator = injector.getInstance(ComponentsGenerator.class);
 
         deleteOutputFolder(injector);

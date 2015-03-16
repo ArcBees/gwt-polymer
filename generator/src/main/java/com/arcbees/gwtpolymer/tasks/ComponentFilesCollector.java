@@ -18,7 +18,6 @@ package com.arcbees.gwtpolymer.tasks;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -67,7 +66,7 @@ public class ComponentFilesCollector implements Task<PolymerComponent> {
             File[] files,
             final File moduleDirectory) {
 
-        return FluentIterable.from(Arrays.asList(files))
+        return FluentIterable.of(files)
                 .transform(new Function<File, String>() {
                     @Override
                     public String apply(File input) {
