@@ -22,44 +22,58 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.ScriptInjector;
 
 public class GwtPolymer {
-    public interface LoadCallback {
-        void onInjectDone();
-    }
 
-    public static void init() {
-        init(null);
-    }
+	private static boolean isWebCompScriptInjected = false;
 
-    public static void init(LoadCallback callbacks) {
-        injectWebComponentsScript(callbacks);
-    }
+	public interface LoadCallback {
+		void onInjectDone();
+	}
 
-    private static void injectWebComponentsScript(final LoadCallback callback) {
-        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "webcomponentsjs/webcomponents.min.js")
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .setCallback(new Callback<Void, Exception>() {
-                    @Override
-                    public void onFailure(Exception reason) {
-                        GWT.log(reason.getMessage());
-                    }
+	public static void init() {
+		init(null);
+	}
 
-                    @Override
-                    public void onSuccess(Void result) {
-                        Imports imports = GWT.create(Imports.class);
-                        imports.injectImports();
-                        doCallback(callback);
-                    }
-                }).inject();
-    }
+	public static void init(LoadCallback callbacks) {
+		injectWebComponentsScript(callbacks);
+	}
 
-    private static void doCallback(final LoadCallback callback) {
-        if (callback != null) {
-            Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-                @Override
-                public void execute() {
-                    callback.onInjectDone();
-                }
-            });
-        }
-    }
+	private static void injectWebComponentsScript(final LoadCallback callback) {
+		if (isWebCompScriptInjected) {
+
+			doCallback(callback);
+
+			return;
+
+		}
+		ScriptInjector
+				.fromUrl(
+						GWT.getModuleBaseURL()
+								+ "webcomponentsjs/webcomponents.min.js")
+				.setWindow(ScriptInjector.TOP_WINDOW)
+				.setCallback(new Callback<Void, Exception>() {
+					@Override
+					public void onFailure(Exception reason) {
+						GWT.log(reason.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						isWebCompScriptInjected = true;
+						Imports imports = GWT.create(Imports.class);
+						imports.injectImports();
+						doCallback(callback);
+					}
+				}).inject();
+	}
+
+	private static void doCallback(final LoadCallback callback) {
+		if (callback != null) {
+			Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+				@Override
+				public void execute() {
+					callback.onInjectDone();
+				}
+			});
+		}
+	}
 }
