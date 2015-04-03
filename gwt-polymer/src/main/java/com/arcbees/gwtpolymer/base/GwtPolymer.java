@@ -22,7 +22,6 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.ScriptInjector;
 
 public class GwtPolymer {
-
     private static boolean webCompScriptInj;
 
     public interface LoadCallback {
@@ -38,7 +37,6 @@ public class GwtPolymer {
     }
 
     private static void injectWebComponentsScript(final LoadCallback callback) {
-
         if (webCompScriptInj) {
             doCallback(callback);
             return;
