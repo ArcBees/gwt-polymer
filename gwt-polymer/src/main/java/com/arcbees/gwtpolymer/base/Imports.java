@@ -17,5 +17,7 @@
 package com.arcbees.gwtpolymer.base;
 
 public interface Imports {
-    void injectImports();
+    void injectImports(GwtPolymer.Function callback);
+
+    void injectImport(String element);
 }

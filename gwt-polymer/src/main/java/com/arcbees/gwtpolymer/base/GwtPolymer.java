@@ -16,15 +16,18 @@
 
 package com.arcbees.gwtpolymer.base;
 
-import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.ScriptInjector;
 
 public class GwtPolymer {
     public interface LoadCallback {
         void onInjectDone();
     }
+
+    interface Function {
+        void f();
+    }
+
+    private static final Imports IMPORTS = GWT.create(Imports.class);
 
     public static void init() {
         init(null);
@@ -35,31 +38,18 @@ public class GwtPolymer {
     }
 
     private static void injectWebComponentsScript(final LoadCallback callback) {
-        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "webcomponentsjs/webcomponents.min.js")
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .setCallback(new Callback<Void, Exception>() {
-                    @Override
-                    public void onFailure(Exception reason) {
-                        GWT.log(reason.getMessage());
-                    }
-
-                    @Override
-                    public void onSuccess(Void result) {
-                        Imports imports = GWT.create(Imports.class);
-                        imports.injectImports();
-                        doCallback(callback);
-                    }
-                }).inject();
+        IMPORTS.injectImport(GWT.getModuleBaseURL() + "polymer/polymer.html");
+        IMPORTS.injectImports(new Function() {
+            @Override
+            public void f() {
+                onImportsLoaded(callback);
+            }
+        });
     }
 
-    private static void doCallback(final LoadCallback callback) {
+    private static void onImportsLoaded(LoadCallback callback) {
         if (callback != null) {
-            Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-                @Override
-                public void execute() {
-                    callback.onInjectDone();
-                }
-            });
+            callback.onInjectDone();
         }
     }
 }
