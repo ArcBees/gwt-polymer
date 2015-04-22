@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+        "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
+<module>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreicon.CoreIcon"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreiconsetsvg.CoreIconsetSvg"/>
+
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/av-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/communication-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/core-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/device-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/editor-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/hardware-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/image-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/maps-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/notification-icons.html"/>
+    <extend-configuration-property name="gwtpolymer.elements" value="core-icons/social-icons.html"/>
+</module>
+

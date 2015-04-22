@@ -1,0 +1,52 @@
+##* @vtlvariable name="elements" type="java.lang.String[]" *#
+##* @vtlvariable name="elements" type="java.lang.String[]" *#
+package $package;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArrayString;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.HeadElement;
+import com.google.gwt.dom.client.LinkElement;
+
+public class $implName implements Imports {
+    @Override
+    public void injectImports(GwtPolymer.Function callback) {
+        String baseUrl = GWT.getModuleBaseURL();
+        JsArrayString elements = JsArrayString.createArray().cast();
+#foreach ($element in $elements)
+#if ($element && !$element.empty)
+        elements.push(baseUrl + "$element");
+#end
+#end
+        importElements(elements, callback);
+    }
+
+    @Override
+    public void injectImport(String element) {
+        Document document = Document.get();
+
+        LinkElement linkElement = document.createLinkElement();
+        linkElement.setRel("import");
+        linkElement.setHref(element);
+
+        HeadElement head = document.getHead();
+        head.appendChild(linkElement);
+    }
+
+    private native void importElements(JsArrayString elements, GwtPolymer.Function callback) /*-{
+        var cb = callback;
+        var that = this;
+        var imports = elements;
+#set ($wnd="$wnd")
+        ${wnd}.addEventListener('polymer-ready', function() {
+            that.@${package}.${implName}::doCallback(Lcom/google/gwt/core/client/JsArrayString;Lcom/arcbees/gwtpolymer/base/GwtPolymer$Function;)(imports, cb);
+        });
+    }-*/;
+
+    private native void doCallback(JsArrayString elements, GwtPolymer.Function callback) /*-{
+        var cb = callback;
+        ${wnd}.Polymer["import"](elements, function () {
+            cb.@com.arcbees.gwtpolymer.base.GwtPolymer.Function::f()();
+        });
+    }-*/;
+}
