@@ -22,11 +22,12 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.ScriptInjector;
 
 public class GwtPolymer {
-    private static boolean webCompScriptInj;
 
     public interface LoadCallback {
         void onInjectDone();
     }
+    
+    private static boolean webComponentsScriptInjected;
 
     public static void init() {
         init(null);
@@ -37,7 +38,7 @@ public class GwtPolymer {
     }
 
     private static void injectWebComponentsScript(final LoadCallback callback) {
-        if (webCompScriptInj) {
+        if (webComponentsScriptInjected) {
             doCallback(callback);
             return;
         }
@@ -54,7 +55,7 @@ public class GwtPolymer {
                         Imports imports = GWT.create(Imports.class);
                         imports.injectImports();
                         doCallback(callback);
-                        webCompScriptInj = true;
+                        webComponentsScriptInjected = true;
                     }
                 }).inject();
     }
