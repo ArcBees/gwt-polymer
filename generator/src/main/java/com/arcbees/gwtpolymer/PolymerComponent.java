@@ -34,7 +34,6 @@ public class PolymerComponent {
 
     private List<String> elementNames;
     private Set<PolymerComponent> dependencies;
-    private boolean astParsed;
 
     @Inject
     PolymerComponent(
@@ -82,13 +81,5 @@ public class PolymerComponent {
 
     public void setDependencies(Set<PolymerComponent> dependencies) {
         this.dependencies = dependencies;
-    }
-
-    public boolean isAstParsed() {
-        return astParsed;
-    }
-
-    public void setAstParsed(boolean astParsed) {
-        this.astParsed = astParsed;
     }
 }
