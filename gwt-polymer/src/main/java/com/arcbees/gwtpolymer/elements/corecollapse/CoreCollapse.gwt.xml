@@ -3,6 +3,7 @@
         "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module>
     <inherits name="com.arcbees.gwtpolymer.elements.polymer.Polymer"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.coreresizable.CoreResizable"/>
 
     <extend-configuration-property name="gwtpolymer.elements" value="core-collapse/core-collapse.html"/>
 </module>

@@ -38,7 +38,7 @@ public class GwtPolymer {
     }
 
     private static void injectWebComponentsScript(final LoadCallback callback) {
-        IMPORTS.injectImport(GWT.getModuleBaseURL() + "polymer/polymer.html");
+        IMPORTS.injectImport("polymer/polymer.html");
         IMPORTS.injectImports(new Function() {
             @Override
             public void f() {

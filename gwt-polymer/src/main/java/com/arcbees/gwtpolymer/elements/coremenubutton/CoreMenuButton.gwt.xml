@@ -5,6 +5,7 @@
     <inherits name="com.arcbees.gwtpolymer.elements.polymer.Polymer"/>
     <inherits name="com.arcbees.gwtpolymer.elements.corea11ykeys.CoreA11yKeys"/>
     <inherits name="com.arcbees.gwtpolymer.elements.coredropdown.CoreDropdown"/>
+    <inherits name="com.arcbees.gwtpolymer.elements.corefocusable.CoreFocusable"/>
 
     <extend-configuration-property name="gwtpolymer.elements" value="core-menu-button/core-menu-button.html"/>
 </module>

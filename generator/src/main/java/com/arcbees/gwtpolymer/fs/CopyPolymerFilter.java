@@ -42,6 +42,7 @@ public class CopyPolymerFilter implements FileFilter {
         NAMES_TO_IGNORE.add("metadata.html");
         NAMES_TO_IGNORE.add("web-animations*dev*");
         NAMES_TO_IGNORE.add("web-animations-*.html");
+        NAMES_TO_IGNORE.add("polymer-lib.html");
     }
 
     private final FileFilter delegate;

@@ -27,7 +27,7 @@ public class $implName implements Imports {
 
         LinkElement linkElement = document.createLinkElement();
         linkElement.setRel("import");
-        linkElement.setHref(element);
+        linkElement.setHref(GWT.getModuleBaseURL() + element);
 
         HeadElement head = document.getHead();
         head.appendChild(linkElement);
