@@ -24,7 +24,7 @@ public class GwtPolymer {
     }
 
     private static boolean webComponentsScriptInjected;
-
+    
     interface Function {
         void f();
     }
