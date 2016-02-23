@@ -23,6 +23,8 @@ public class GwtPolymer {
         void onInjectDone();
     }
 
+    private static boolean webComponentsScriptInjected;
+
     interface Function {
         void f();
     }
@@ -45,6 +47,28 @@ public class GwtPolymer {
                 onImportsLoaded(callback);
             }
         });
+
+        if (webComponentsScriptInjected) {
+            doCallback(callback);
+            return;
+        }
+
+        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "webcomponentsjs/webcomponents.min.js")
+                .setWindow(ScriptInjector.TOP_WINDOW)
+                .setCallback(new Callback<Void, Exception>() {
+                    @Override
+                    public void onFailure(Exception reason) {
+                        GWT.log(reason.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(Void result) {
+                        Imports imports = GWT.create(Imports.class);
+                        imports.injectImports();
+                        doCallback(callback);
+                        webComponentsScriptInjected = true;
+                    }
+                }).inject();
     }
 
     private static void onImportsLoaded(LoadCallback callback) {
